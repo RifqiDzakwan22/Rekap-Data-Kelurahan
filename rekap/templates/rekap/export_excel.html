@@ -1,0 +1,12 @@
+{% extends 'rekap/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2 class="text-center mb-4">Export Data Penduduk ke Excel</h2>
+<p class="text-center">Klik tombol di bawah untuk mengunduh file Excel berisi data penduduk saat ini.</p>
+
+<div class="text-center mt-4">
+    <a href="{% url 'download_excel' %}" class="btn btn-success">Download Excel</a>
+    <a href="{% url 'list_penduduk' %}" class="btn btn-secondary">Kembali ke Data Penduduk</a>
+</div>
+{% endblock %}

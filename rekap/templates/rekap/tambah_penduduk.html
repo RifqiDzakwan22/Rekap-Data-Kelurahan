@@ -1,0 +1,37 @@
+{% extends 'rekap/base.html' %}
+{% block content %}
+<h2>Tambah Data Penduduk</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label class="form-label">NIK</label>
+        <input type="text" name="nik" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Nama</label>
+        <input type="text" name="nama" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Alamat</label>
+        <textarea name="alamat" class="form-control" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">RT</label>
+        <input type="text" name="rt" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">RW</label>
+        <input type="text" name="rw" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Tanggal Lahir</label>
+        <input type="date" name="tanggal_lahir" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Foto</label>
+        <input type="file" name="foto" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Simpan</button>
+    <a href="{% url 'list_penduduk' %}" class="btn btn-secondary">Kembali</a>
+</form>
+{% endblock %}

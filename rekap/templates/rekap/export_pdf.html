@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Data Penduduk PDF</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 4px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Data Penduduk</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>NIK</th>
+                <th>Nama</th>
+                <th>Alamat</th>
+                <th>RT</th>
+                <th>RW</th>
+                <th>Tanggal Lahir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in penduduk %}
+            <tr>
+                <td>{{ p.nik }}</td>
+                <td>{{ p.nama }}</td>
+                <td>{{ p.alamat }}</td>
+                <td>{{ p.rt }}</td>
+                <td>{{ p.rw }}</td>
+                <td>{{ p.tanggal_lahir|date:"d M Y" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

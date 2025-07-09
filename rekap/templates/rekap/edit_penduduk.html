@@ -1,0 +1,33 @@
+{% extends 'rekap/base.html' %}
+{% block content %}
+<h2>Edit Data Penduduk</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label class="form-label">NIK</label>
+        <input type="text" name="nik" class="form-control" value="{{ penduduk.nik }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Nama</label>
+        <input type="text" name="nama" class="form-control" value="{{ penduduk.nama }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Alamat</label>
+        <textarea name="alamat" class="form-control" required>{{ penduduk.alamat }}</textarea>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">RT</label>
+        <input type="text" name="rt" class="form-control" value="{{ penduduk.rt }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">RW</label>
+        <input type="text" name="rw" class="form-control" value="{{ penduduk.rw }}" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Tanggal Lahir</label>
+        <input type="date" name="tanggal_lahir" class="form-control" value="{{ penduduk.tanggal_lahir }}" required>
+    </div>
+    <button type="submit" class="btn btn-success">Update</button>
+    <a href="{% url 'list_penduduk' %}" class="btn btn-secondary">Kembali</a>
+</form>
+{% endblock %}
