@@ -17,6 +17,7 @@
 <div class="text-center mb-3">
     <a href="{% url 'tambah_penduduk' %}" class="btn btn-success me-2">Tambah Penduduk</a>
     {% if user.is_staff %}
+    <a href="{% url 'daftar_user' %}" class="btn btn-success me-2">Daftar User</a>
     <a href="{% url 'export_excel' %}" class="btn btn-outline-success me-2">Export Excel</a>
     <a href="{% url 'export_pdf' %}" class="btn btn-outline-danger me-2">Export PDF</a>
     <a href="{% url 'grafik_penduduk' %}" class="btn btn-outline-info">Lihat Grafik</a>
