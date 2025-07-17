@@ -14,7 +14,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rekap',  # app kamu
+    'rekap', 
 ]
 
 MIDDLEWARE = [
@@ -32,8 +32,8 @@ ROOT_URLCONF = 'kelurahan_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],   # Biarkan kosong
-        'APP_DIRS': True,  # Harus True
+        'DIRS': [],
+        'APP_DIRS': True, 
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
