@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.template.loader import render_to_string
@@ -28,6 +28,22 @@ class CustomUserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+# ---------------------- Login View ----------------------
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+            return redirect('list_penduduk')
+        else:
+            messages.error(request, 'Nama pengguna atau kata sandi salah.')
+
+    return render(request, 'rekap/login.html')
 
 
 # ---------------------- Penduduk Views ----------------------
