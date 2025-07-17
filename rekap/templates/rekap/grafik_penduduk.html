@@ -3,6 +3,10 @@
 
 {% block content %}
 <h2 class="text-center mb-4">Grafik Jumlah Penduduk per RT</h2>
+<div class="text-center mb-4">
+    <a href="{% url 'list_penduduk' %}" class="btn btn-secondary">Kembali ke Data Penduduk</a>
+</div>
+
 <canvas id="pendudukChart" width="600" height="400"></canvas>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -27,5 +31,6 @@
         }
     });
 </script>
+
 
 {% endblock %}
