@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Rekap Data Kelurahan</title>
+    <title>Rekap Data Kelurahan Sempaja Selatan</title>
     {% load static %}
+    <link rel="shortcut icon" href="{% static 'rekap/logoSmD.png' %}" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'list_penduduk' %}">Rekap Data Kelurahan</a>
+        <img src="{% static 'rekap/samarinda.png' %}" alt="Logo Samarinda" width="50" height="50" class="me-2">
+        <a class="navbar-brand" href="{% url 'list_penduduk' %}">Rekap Data Kelurahan Sempaja Selatan</a>
         <div class="ms-auto">
             {% if user.is_authenticated %}
                 <span class="text-white me-2">Halo, {{ user.username }}</span>

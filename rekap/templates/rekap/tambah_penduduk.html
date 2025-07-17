@@ -1,4 +1,4 @@
-{% extends 'rekap/base.html' %}
+{% extends 'rekap/home.html' %}
 {% block content %}
 <h2>Tambah Data Penduduk</h2>
 <form method="post" enctype="multipart/form-data">
@@ -6,6 +6,10 @@
     <div class="mb-3">
         <label class="form-label">NIK</label>
         <input type="text" name="nik" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="no_kk" class="form-label">No. Kartu Keluarga</label>
+        <input type="text" class="form-control" id="no_kk" name="no_kk">
     </div>
     <div class="mb-3">
         <label class="form-label">Nama</label>

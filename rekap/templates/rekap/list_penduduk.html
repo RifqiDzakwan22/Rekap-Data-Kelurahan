@@ -1,4 +1,4 @@
-{% extends 'rekap/base.html' %}
+{% extends 'rekap/home.html' %}
 {% load static %}
 
 {% block content %}
@@ -28,6 +28,7 @@
     <thead class="table-dark">
         <tr class="text-center">
             <th>NIK</th>
+            <th>No. KK</th>
             <th>Nama</th>
             <th>Alamat</th>
             <th>RT</th>
@@ -43,6 +44,7 @@
         {% for p in penduduk %}
         <tr class="text-center">
             <td>{{ p.nik }}</td>
+            <td>{{ p.no_kk }}</td>
             <td>{{ p.nama }}</td>
             <td>{{ p.alamat }}</td>
             <td>{{ p.rt }}</td>
@@ -50,7 +52,7 @@
             <td>{{ p.tanggal_lahir }}</td>
             <td>
                 {% if p.foto %}
-                    <img src="{{ p.foto.url }}" alt="Foto {{ p.nama }}" width="50" style="border-radius:50%;object-fit:cover;">
+                    <img src="{{ p.foto.url }}" alt="Foto {{ p.nama }}" width="50" height="50" style="object-fit:cover;">
                 {% else %}
                     Tidak ada
                 {% endif %}
