@@ -2,6 +2,8 @@
 {% load static %}
 
 {% block content %}
+
+<!-- notif berhasil memasukin data -->
 {% if messages %}
     <div class="alert alert-success">
         {% for message in messages %}
@@ -32,6 +34,7 @@
     {% endif %}
 </div>
 
+<!-- table - table data -->
 <table class="table table-striped table-bordered">
     <thead class="table-dark">
         <tr class="text-center">
@@ -48,6 +51,8 @@
             {% endif %}
         </tr>
     </thead>
+
+    <!-- hasil inputan data -->
     <tbody>
         {% for p in penduduk %}
         <tr class="text-center">

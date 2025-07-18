@@ -7,8 +7,10 @@
     <a href="{% url 'list_penduduk' %}" class="btn btn-secondary">Kembali ke Data Penduduk</a>
 </div>
 
+<!-- Canvas tempat grafik Chart.js akan ditampilkan -->
 <canvas id="pendudukChart" width="600" height="400"></canvas>
 
+<!-- Memuat library Chart.js dari CDN (online) -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     const ctx = document.getElementById('pendudukChart').getContext('2d');
