@@ -45,7 +45,6 @@
             <th>RT</th>
             <th>RW</th>
             <th>Tanggal Lahir</th>
-            <th>Foto</th>
             {% if user.is_staff %}
             <th>Aksi</th>
             {% endif %}
@@ -63,13 +62,6 @@
             <td>{{ p.rt }}</td>
             <td>{{ p.rw }}</td>
             <td>{{ p.tanggal_lahir }}</td>
-            <td>
-                {% if p.foto %}
-                    <img src="{{ p.foto.url }}" alt="Foto {{ p.nama }}" width="50" height="50" style="object-fit:cover;">
-                {% else %}
-                    Tidak ada
-                {% endif %}
-            </td>
             {% if user.is_staff %}
             <td>
                 <a href="{% url 'edit_penduduk' p.id %}" class="btn btn-warning btn-sm">Edit</a>
