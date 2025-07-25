@@ -5,9 +5,14 @@
 <h2>Edit Data Penduduk</h2>
 <form method="post">
     {% csrf_token %}
+     {{ form.as_p }}
     <div class="mb-3">
         <label class="form-label">NIK</label>
         <input type="text" name="nik" class="form-control" value="{{ penduduk.nik }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="id_no_kk" class="form-label">No. KK</label>
+        <input type="text" class="form-control" id="id_no_kk" name="no_kk" value="{{ form.no_kk.value }}">
     </div>
     <div class="mb-3">
         <label class="form-label">Nama</label>
@@ -26,8 +31,8 @@
         <input type="text" name="rw" class="form-control" value="{{ penduduk.rw }}" required>
     </div>
     <div class="mb-3">
-        <label class="form-label">Tanggal Lahir</label>
-        <input type="date" name="tanggal_lahir" class="form-control" value="{{ penduduk.tanggal_lahir }}" required>
+        <label for="id_tanggal_lahir" class="form-label">Tanggal Lahir</label>
+        <input type="date" name="tanggal_lahir" class="form-control" value="{{ penduduk.tanggal_lahir|date:'Y-m-d' }}" required>
     </div>
     <button type="submit" class="btn btn-success">Update</button>
     <a href="{% url 'list_penduduk' %}" class="btn btn-secondary">Kembali</a>

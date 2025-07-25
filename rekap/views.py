@@ -10,7 +10,7 @@ from django.template.loader import render_to_string
 from xhtml2pdf import pisa
 import pandas as pd
 from io import BytesIO
-from .models import DataPenduduk
+from . models import DataPenduduk
 from django.db.models import Count
 
 
@@ -124,13 +124,13 @@ def edit_penduduk(request, pk):
 
     penduduk = get_object_or_404(DataPenduduk, pk=pk)
     if request.method == 'POST':
-        penduduk.nik = request.POST['nik']
-        penduduk.no_kk = request.POST['no_kk']
-        penduduk.nama = request.POST['nama']
-        penduduk.alamat = request.POST['alamat']
-        penduduk.rt = request.POST['rt']
-        penduduk.rw = request.POST['rw']
-        penduduk.tanggal_lahir = request.POST['tanggal_lahir']
+        penduduk.nik = request.POST.get('nik')
+        penduduk.no_kk = request.POST.get('no_kk')
+        penduduk.nama = request.POST.get('nama')
+        penduduk.alamat = request.POST.get('alamat')
+        penduduk.rt = request.POST.get('rt')
+        penduduk.rw = request.POST.get('rw')
+        penduduk.tanggal_lahir = request.POST.get('tanggal_lahir')
         if request.FILES.get('foto'):
             penduduk.foto = request.FILES.get('foto')
         penduduk.save()
