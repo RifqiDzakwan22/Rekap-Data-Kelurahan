@@ -13,7 +13,7 @@
         <a class="navbar-brand" href="{% url 'list_penduduk' %}">Rekap Data Kelurahan Sempaja Selatan</a>
         <div class="ms-auto">
             {% if user.is_authenticated %}
-                <span class="text-white me-2">Halo, {{ user.username }}</span>
+                <span class="text-white me-2">Halo 👤 {{ user.username }}</span>
                 <form action="{% url 'logout' %}" method="post" style="display:inline;">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>

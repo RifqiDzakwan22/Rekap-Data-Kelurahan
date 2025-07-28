@@ -15,4 +15,6 @@ urlpatterns = [
     path('export-excel/', views.export_excel, name='export_excel'),
     path('export-pdf/', views.export_pdf, name='export_pdf'),
     path('grafik-penduduk/', views.grafik_penduduk, name='grafik_penduduk'),
+    path('Histori/', views.histori_aktivitas, name='histori_aktivitas'),
+    path('hapus-histori/<int:pk>/', views.hapus_histori, name='hapus_histori'),
 ]

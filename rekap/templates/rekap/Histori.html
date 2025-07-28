@@ -1,0 +1,63 @@
+{% extends 'rekap/home.html' %}
+
+{% block content %}
+<h2 class="text-center mb-4">Histori Aktivitas</h2>
+
+<!-- Pencarian Histori -->
+<form method="get" class="d-flex justify-content-center mb-3">
+    <input type="text" name="q" class="form-control w-50 me-2" placeholder="Cari aktivitas..." value="{{ request.GET.q }}">
+    <button type="submit" class="btn btn-primary">Cari</button>
+</form>
+
+<!-- Tombol -->
+<div class="text-center mt-4">
+    <a href="{% url 'list_penduduk' %}" class="btn btn-secondary mb-3">
+        <i class="bi bi-arrow-left"></i> Kembali ke Data Penduduk
+    </a>
+
+<!-- Tabel Histori Aktivitas -->
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr class="text-center">
+            <th>Pengguna</th>
+            <th>Aksi</th>
+            <th>Keterangan</th>
+            <th>Waktu</th>
+            <th>aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for histori in historis %}
+        <tr class="text-center">
+            <td>{{ histori.user.username }}</td>
+            <td>{{ histori.action }}</td>
+            <td>{{ histori.details }}</td>
+            <td>{{ histori.timestamp }}</td>
+            <td>
+                <!-- Tombol hapus histori -->
+                <a href="{% url 'hapus_histori' histori.pk %}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus histori ini?')">Hapus</a>
+            </td>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" class="text-center">Tidak ada histori aktivitas.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Paginasi -->
+<div class="d-flex justify-content-center">
+    {% if historis.has_previous %}
+        <a class="btn btn-secondary" href="?page=1">First</a>
+        <a class="btn btn-secondary" href="?page={{ historis.previous_page_number }}">Previous</a>
+    {% endif %}
+    <span class="btn btn-light disabled">Page {{ historis.number }} of {{ historis.paginator.num_pages }}</span>
+    {% if historis.has_next %}
+        <a class="btn btn-secondary" href="?page={{ historis.next_page_number }}">Next</a>
+        <a class="btn btn-secondary" href="?page={{ historis.paginator.num_pages }}">Last</a>
+    {% endif %}
+</div>
+
+{% endblock %}
