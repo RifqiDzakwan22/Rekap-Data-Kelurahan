@@ -3,6 +3,13 @@
 {% block content %}
 <h2 class="text-center mb-4">Histori Aktivitas</h2>
 
+<!-- Catatan Pengguna -->
+<div class="alert alert-info mb-3">
+    <strong>Petunjuk Penggunaan Pencarian</strong>
+    <p>Untuk mencari histori aktivitas berdasarakan kata kunci, cukup saja ketikan kata yang yang di cari (misalnya, nama pengguna atau tindakan yang dilakukan) pada kolom di bawah pencarian ini. Pencarian akan menampilkan hasil yang relevan sesuai dengan kata yang dimasukan</p>
+    <p>Contoh: 'Menambahkan", "Memperbarui", atau "Hapus" untuk mencari tindakan terkait.</p>
+</div>
+
 <!-- Pencarian Histori -->
 <form method="get" class="d-flex justify-content-center mb-3">
     <input type="text" name="q" class="form-control w-50 me-2" placeholder="Cari aktivitas..." value="{{ request.GET.q }}">

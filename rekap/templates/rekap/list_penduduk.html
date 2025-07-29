@@ -3,7 +3,13 @@
 
 {% block content %}
 
-<!-- notif berhasil memasukin data -->
+<!-- Catatan Pengguna -->
+<div class="alert alert-info mb-4">
+    <strong>Pentunjuk</strong>
+<p>Silahkan Di isi data anda di tombol "Tambah Penduduk"</p>
+</div>
+
+<!-- Notif berhasil memasukin data -->
 {% if messages %}
     <div class="alert alert-success">
         {% for message in messages %}
@@ -13,7 +19,7 @@
 {% endif %}
 
 <h2 class="text-center mb-4">
-    <img src="{% static 'rekap/penduduk.png' %}" alt="Data Penduduk" width="70" class="me-2">
+    <img src="{% static 'rekap/Penduduk.png' %}" alt="Data Penduduk" width="70" class="me-2">
     Data Penduduk
 </h2>
 
