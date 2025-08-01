@@ -115,14 +115,14 @@ def tambah_penduduk(request):
             foto=foto
         )
 
-        # Simpan histori
+        # simpan histori
         log_aktivitas(request.user, 'add', 'Penduduk', penduduk.id, f"Menambahkan penduduk dengan NIK {penduduk.nik}")
 
         messages.success(request, 'Data penduduk berhasil ditambahkan.')
         return redirect('list_penduduk')
     return render(request, 'rekap/tambah_penduduk.html')
 
-# Fungsi untuk menyimpan histori aktivitas
+# fungsi untuk menyimpan histori aktivitas
 def log_aktivitas(user, action, object_type, object_id, details):
     Histori.objects.create(
         user=user,
@@ -134,13 +134,13 @@ def log_aktivitas(user, action, object_type, object_id, details):
 
 @login_required
 def histori_aktivitas(request):
-    # Ambil data histori aktivitas
+    # ambil data histori aktivitas
     if request.GET.get('q'):
-        historis = Histori.objects.filter(details__icontains=request.GET['q']).order_by('-timestamp')  # Jika ingin filter pencarian
+        historis = Histori.objects.filter(details__icontains=request.GET['q']).order_by('-timestamp')  # jika ingin filter pencarian
     else:
-        historis = Histori.objects.all().order_by('-timestamp')  # Ambil semua data histori yang ada
+        historis = Histori.objects.all().order_by('-timestamp')  # untuk ambil semua data histori yang ada
 
-    # Paginasi: Menampilkan 10 item per halaman
+    # paginasi: Menampilkan 10 item per halaman
     paginator = Paginator(historis, 10)
     page = request.GET.get('page')
     historis = paginator.get_page(page)
@@ -169,7 +169,7 @@ def edit_penduduk(request, pk):
             penduduk.foto = request.FILES.get('foto')
         penduduk.save()
 
-        # Simpan histori setelah perubahan
+        # simpan histori setelah perubahan
         log_aktivitas(request.user, 'edit', 'Penduduk', penduduk.id, f"Memperbarui penduduk dengan NIK {old_data.nik}, mengubah data: {old_data.nama} -> {penduduk.nama}")
 
 
@@ -179,15 +179,15 @@ def edit_penduduk(request, pk):
 
 @login_required
 def hapus_histori(request, pk):
-    # Pastikan hanya admin yang bisa menghapus histori
+    # khusus admin yang bisa menghapus histori
     if not request.user.is_staff:
         messages.error(request, 'Anda tidak memiliki izin untuk menghapus histori aktivitas.')
         return redirect('histori_aktivitas')  # Ganti dengan URL histori yang sesuai
 
-    # Mencari histori berdasarkan primary key (ID)
+    # mencari histori berdasarkan primary key (ID)
     histori = get_object_or_404(Histori, pk=pk)
     
-    # Hapus histori
+    # hapus histori
     histori.delete()
     messages.success(request, 'Histori aktivitas berhasil dihapus.')
     
@@ -195,23 +195,23 @@ def hapus_histori(request, pk):
 
 @login_required
 def hapus_penduduk(request, pk):
-    # Periksa apakah user memiliki izin admin
+    # periksa apakah user memiliki izin admin
     if not request.user.is_staff:
         messages.error(request, 'Anda tidak memiliki izin untuk menghapus.')
         return redirect('list_penduduk')
 
     try:
-        # Mencari penduduk berdasarkan pk
+        # mencari penduduk berdasarkan pk
         penduduk = DataPenduduk.objects.get(pk=pk)
 
-        # Menyimpan histori sebelum menghapus data
+        # menyimpan histori sebelum menghapus data
         log_aktivitas(request.user, 'delete', 'Penduduk', penduduk.id, f"Menghapus penduduk dengan NIK {penduduk.nik}")
 
-        # Menghapus data penduduk
+        # menghapus data penduduk
         penduduk.delete()
         messages.success(request, 'Data penduduk berhasil dihapus.')
     except DataPenduduk.DoesNotExist:
-        # Jika data penduduk tidak ditemukan, berikan pesan error
+        # jika data penduduk tidak ditemukan, berikan pesan error
         messages.error(request, 'Data penduduk tidak ditemukan.')
     
     return redirect('list_penduduk')

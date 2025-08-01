@@ -3,13 +3,13 @@
 
 {% block content %}
 
-<!-- Catatan Pengguna -->
+<!-- catatan pengguna -->
 <div class="alert alert-info mb-4">
     <strong>Pentunjuk</strong>
 <p>Silahkan Di isi data anda di tombol "Tambah Penduduk"</p>
 </div>
 
-<!-- Notif berhasil memasukin data -->
+<!-- notif berhasil memasukin data -->
 {% if messages %}
     <div class="alert alert-success">
         {% for message in messages %}
@@ -23,13 +23,13 @@
     Data Penduduk
 </h2>
 
-<!-- ✅ Form Pencarian -->
+<!-- ✅ form Pencarian -->
 <form method="get" class="d-flex justify-content-center mb-3">
     <input type="text" name="q" class="form-control w-50 me-2" placeholder="Cari nama penduduk..." value="{{ request.GET.q }}">
     <button type="submit" class="btn btn-primary">Cari</button>
 </form>
 
-<!-- ✅ Tombol -->
+<!-- ✅ tombol -->
 <div class="text-center mb-3">
     <a href="{% url 'tambah_penduduk' %}" class="btn btn-success me-2">Tambah Penduduk</a>
     {% if user.is_staff %}

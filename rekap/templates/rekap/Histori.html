@@ -3,26 +3,26 @@
 {% block content %}
 <h2 class="text-center mb-4">Histori Aktivitas</h2>
 
-<!-- Catatan Pengguna -->
+<!-- catatan pengguna -->
 <div class="alert alert-info mb-3">
     <strong>Petunjuk Penggunaan Pencarian</strong>
     <p>Untuk mencari histori aktivitas berdasarakan kata kunci, cukup saja ketikan kata yang yang di cari (misalnya, nama pengguna atau tindakan yang dilakukan) pada kolom di bawah pencarian ini. Pencarian akan menampilkan hasil yang relevan sesuai dengan kata yang dimasukan</p>
     <p>Contoh: 'Menambahkan", "Memperbarui", atau "Hapus" untuk mencari tindakan terkait.</p>
 </div>
 
-<!-- Pencarian Histori -->
+<!-- pencarian histori -->
 <form method="get" class="d-flex justify-content-center mb-3">
     <input type="text" name="q" class="form-control w-50 me-2" placeholder="Cari aktivitas..." value="{{ request.GET.q }}">
     <button type="submit" class="btn btn-primary">Cari</button>
 </form>
 
-<!-- Tombol -->
+<!-- tombol -->
 <div class="text-center mt-4">
     <a href="{% url 'list_penduduk' %}" class="btn btn-secondary mb-3">
         <i class="bi bi-arrow-left"></i> Kembali ke Data Penduduk
     </a>
 
-<!-- Tabel Histori Aktivitas -->
+<!-- tabel histori aktivitas -->
 <table class="table table-striped table-bordered">
     <thead class="table-dark">
         <tr class="text-center">
@@ -41,7 +41,7 @@
             <td>{{ histori.details }}</td>
             <td>{{ histori.timestamp }}</td>
             <td>
-                <!-- Tombol hapus histori -->
+                <!-- tombol hapus histori -->
                 <a href="{% url 'hapus_histori' histori.pk %}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus histori ini?')">Hapus</a>
             </td>
             </td>
@@ -54,7 +54,7 @@
     </tbody>
 </table>
 
-<!-- Paginasi -->
+<!-- paginasi -->
 <div class="d-flex justify-content-center">
     {% if historis.has_previous %}
         <a class="btn btn-secondary" href="?page=1">First</a>
