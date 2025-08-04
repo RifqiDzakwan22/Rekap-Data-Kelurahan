@@ -7,20 +7,29 @@
     <a href="{% url 'list_penduduk' %}" class="btn btn-secondary">Kembali ke Data Penduduk</a>
 </div>
 
-<!-- canvas tempat grafik chart.js akan ditampilkan -->
+<!-- elemen untuk grafik -->
 <canvas id="pendudukChart" width="600" height="400"></canvas>
 
-<!-- memuat library chart.js dari CDN (online) -->
+<!-- tempat untuk nyimpan data JSON (tidak terlihat oleh user cuman admin saja) -->
+{{ rt_labels|json_script:"labels-data" }}
+{{ rt_counts|json_script:"counts-data" }}
+
+<!-- chart.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- script Chart -->
 <script>
+    const rt_labels = JSON.parse(document.getElementById('labels-data').textContent);
+    const rt_counts = JSON.parse(document.getElementById('counts-data').textContent);
+
     const ctx = document.getElementById('pendudukChart').getContext('2d');
     const chart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: {{ rt_labels|safe }},
+            labels: rt_labels,
             datasets: [{
                 label: 'Jumlah Penduduk per RT',
-                data: {{ rt_counts|safe }},
+                data: rt_counts,
                 backgroundColor: 'rgba(54, 162, 235, 0.5)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1
@@ -28,11 +37,11 @@
         },
         options: {
             scales: {
-                y: { beginAtZero: true }
+                y: {
+                    beginAtZero: true
+                }
             }
         }
     });
 </script>
-
-
 {% endblock %}
