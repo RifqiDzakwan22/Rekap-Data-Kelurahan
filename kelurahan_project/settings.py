@@ -32,7 +32,7 @@ ROOT_URLCONF = 'kelurahan_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'rekap' / 'templates'],
         'APP_DIRS': True, 
         'OPTIONS': {
             'context_processors': [
