@@ -1,1 +1,0 @@
-web: gunicorn kelurahan_project.wsgi
