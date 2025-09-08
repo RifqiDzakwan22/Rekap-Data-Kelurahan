@@ -225,6 +225,9 @@ def register(request):
             login(request, user)
             messages.success(request, 'Pendaftaran berhasil, silakan login.')
             return redirect('login')
+        else:
+            messages.error(request, 'Pendaftaran gagal, cek kembali data Anda.')
+
     else:
         form = CustomUserCreationForm()
     return render(request, 'rekap/register.html', {'form': form})
